@@ -12,17 +12,12 @@ class creditCalc{
     private $R;
     private $N;
     
-    public function __construct(DateTime $agreement_date, int $X, float $R, int $N) {
+    public function __construct(DateTime $agreement_date, float $X, float $R, int $N) {
 	$this->agreement_date = $agreement_date->format('d.m.Y');
         $this->X = $X;
 	$this->R = $R;
 	$this->N = $N;
-        
-//        echo gettype($this->X);
-//        echo gettype($this->R);
-//        echo gettype($this->N);
-        
-//        echo $this->result();
+
         $this->calc_valid();
         echo $this->calc_count();
     }

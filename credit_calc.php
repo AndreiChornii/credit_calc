@@ -3,19 +3,8 @@
 $file = __DIR__ . '/classes/' . 'creditCalc.php';
 include $file;
 
-//echo __DIR__;
-//echo $file;
-
-//exit();
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-//$agreement_date = readline('Enter agreement date in format yyyy-mm-dd: ');
 $agreement_date = new DateTime();
-$X = (int)readline('Enter investment sum in $: ');
+$X = (float)readline('Enter investment sum in $: ');
 $R = (float)readline('Enter %: ');
 $N = (int)readline('Enter amount of years: ');
 echo PHP_EOL;
