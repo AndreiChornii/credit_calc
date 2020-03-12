@@ -13,7 +13,7 @@ class creditCalc{
     private $N;
     
     public function __construct(DateTime $agreement_date, float $X, float $R, int $N) {
-	$this->agreement_date = $agreement_date->format('d.m.Y');
+	$this->agreement_date = $agreement_date;
         $this->X = $X;
 	$this->R = $R;
 	$this->N = $N;
@@ -37,13 +37,14 @@ class creditCalc{
         $sum_by_year = $this->X / $this->N;
         echo 'initial_principal_by_year: ' . $sum_by_year . PHP_EOL;
         echo PHP_EOL;
-        echo 'agreement_date: ' . $this->agreement_date . PHP_EOL;
+        echo 'agreement_date: ' . $this->agreement_date->format('d.m.Y') . PHP_EOL;
         $sum_of_percents;
         $year;
         for ($i=0; $i<$this->N; $i++){
             $year = $i + 1;
             $sum_of_percents = ($this->X - $sum_by_year * $i) * $this->R / 100;
-            echo 'sum_of_percents_by ' . $year . ' year: ' . round($sum_of_percents, 2) . PHP_EOL;
+            $this->agreement_date->add(new DateInterval('P1Y'));
+            echo 'date_of_pay: '  . $this->agreement_date->format('d.m.Y') . ' sum_of_percents_by ' . $year . ' year: ' . round($sum_of_percents, 2) . PHP_EOL;
         }
         return ob_get_clean();
     }
